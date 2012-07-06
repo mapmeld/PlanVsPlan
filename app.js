@@ -103,7 +103,7 @@ var init = exports.init = function (config) {
   app.get('/voteb', function(req, res){
     // submit a vote for batman
     votemodel.Vote.findOne({ "name": req.query["i"] }, function(err, myvoteitem){
-      if(!err){
+      if(!err && myvoteitem){
         myvoteitem.votes++;
         myvoteitem.save(function(err){ });
         res.send("{}");
