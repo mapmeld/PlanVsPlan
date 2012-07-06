@@ -8,9 +8,12 @@ body
         a.brand(href="#") DARPA vs Batman
         div.nav-collapse
           ul.nav
-            li.active Showdown
-            li Support DARPA
-            li Support Batman
+            li.active
+              a(href='/') Showdown
+            li
+              a(href='/d') Support DARPA
+            li
+              a(href='/b') Support Batman
 
   div.container
     div.hero-unit
@@ -18,9 +21,11 @@ body
     
     div.row
       .span6
-        h4 #{darpa.item}
-        img.contender(src='#{darpa.pic}')
+        img.span10.contender(src='#{darpa.pic}', style='margin-left:auto;margin-right:auto;')
+        h3
+          a(href="#", onclick="voted()") #{darpa.item}
       
       .span6
-        h4 #{batman.item}
-        img.contender(src='#{batman.pic}')
+        img.span10.contender(src='#{batman.pic}', style='margin-left:auto;margin-right:auto;')
+        h3
+          a(href="#", onclick="voteb()") #{batman.item}

@@ -53,7 +53,16 @@ var init = exports.init = function (config) {
   app.get('/', function(req, res){
     contender_d = "DARPA";
     contender_b = "Batman";
-    res.render('showdown', { darpa: { item: contender_d, pic: "" }, batman: { item: contender_b, pic: "" } });
+    res.render('showdown', {
+    	darpa: {
+    		item: contender_d,
+    		pic: "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/DARPA_Logo.jpg/180px-DARPA_Logo.jpg"
+    	},
+    	batman: {
+    		item: contender_b,
+    		pic: "http://upload.wikimedia.org/wikipedia/en/a/a7/Batman_Lee.png"
+    	}
+    });
   });
 
   app.get('/auth', middleware.require_auth_browser, routes.index);
