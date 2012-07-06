@@ -5,9 +5,10 @@ var mongoose = require('mongoose'),
 var VoteSchema = new Schema({
   name: String,
   url: String,
-  votes: Number
+  votes: Number,
+  randomkey: Number,
+  supports: String
 });
 
 var Vote = mongoose.model('Vote', VoteSchema);
-
 exports.Vote = Vote;
