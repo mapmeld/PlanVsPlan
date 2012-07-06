@@ -1,0 +1,6 @@
+function voted(){
+  
+}
+function voteb(){
+
+}

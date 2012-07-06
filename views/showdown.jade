@@ -1,6 +1,7 @@
 head
   title DARPA vs. Batman
   link(href='/stylesheets/slate.min.css', rel='stylesheet', type='text/css')
+  script(type='text/javascript', src='/scripts/versus.js')
 body
   div.navbar
     .navbar-inner
@@ -21,11 +22,13 @@ body
     
     div.row
       .span6
-        img.span10.contender(src='#{darpa.pic}', style='margin-left:auto;margin-right:auto;')
+        img.contender(src='#{darpa.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;')
+        br
         h3
           a(href="#", onclick="voted()") #{darpa.item}
       
       .span6
-        img.span10.contender(src='#{batman.pic}', style='margin-left:auto;margin-right:auto;')
+        img.contender(src='#{batman.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;')
+        br
         h3
           a(href="#", onclick="voteb()") #{batman.item}
