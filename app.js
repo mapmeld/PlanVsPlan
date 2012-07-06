@@ -140,10 +140,11 @@ var init = exports.init = function (config) {
   app.get('/voted', function(req, res){
     // submit a vote for darpa
     votemodel.Vote.findOne({ "name": req.query["i"] }, function(err, myvoteitem){
-      if(!err){
+      if(!err && myvoteitem){
         myvoteitem.votes++;
-        myvoteitem.save(function(err){ });
-        res.send("{}");
+        myvoteitem.save(function(err){
+          res.send("{}");
+        });
       }
       else{
         // new item!
@@ -170,8 +171,9 @@ var init = exports.init = function (config) {
             break;
           }
         }
-        myvoteitem.save(function(err){ });
-        res.send("{}");
+        myvoteitem.save(function(err){
+          res.send("{}");
+        });
       }
     });
   });
