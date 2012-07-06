@@ -90,7 +90,7 @@ var init = exports.init = function (config) {
     votemodel.Vote.find({
       randomkey: skey,
       supports: "darpa"
-    }, { limit: 10 }, function(err, contender_d){
+    }, ['name', 'url'], { limit: 10 }, function(err, contender_d){
       if(!contender_d){
         // could not find 
         votemodel.Vote.findOne({
@@ -101,7 +101,7 @@ var init = exports.init = function (config) {
           votemodel.Vote.find({
             randomkey: skey,
             supports: "batman"
-          }, { limit: 10 },  function(err, contender_b){
+          }, ['name', 'url'], { limit: 10 },  function(err, contender_b){
       
             if(!contender_b){
               votemodel.Vote.findOne({
@@ -129,7 +129,7 @@ var init = exports.init = function (config) {
         votemodel.Vote.find({
           randomkey: skey,
           supports: "batman"
-        }, { limit: 10 }, function(err, contender_b){
+        }, ['name', 'url'], { limit: 10 }, function(err, contender_b){
       
           if(!contender_b){
             votemodel.Vote.findOne({
