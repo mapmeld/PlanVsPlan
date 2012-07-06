@@ -11,14 +11,14 @@ body
           ul.nav
             li
               a(href='/') Showdown
-            li.active
-              a(href='/d') About DARPA
             li
+              a(href='/d') About DARPA
+            li.active
               a(href='/b') About Batman
 
   div.container
     div.hero-unit(style='padding:20px;')
-      h1 DARPA vs. Batman: About Batman
+      h1 DARPA vs. Batman: Batman
     
     div.row(style='text-align:center;')
       .span12
@@ -32,10 +32,11 @@ body
         br
         h3 Submit a Batman Gadget
         form.well(action="/submitb", method="POST")
-          span.info Item Name
+          label.info Item Name
           input.x-large(name='item')
           br
-          span.info Photo URL
+          br
+          label.info Photo URL
           input.x-large(name='url')
           hr
           input.btn.btn-primary(type="submit")
