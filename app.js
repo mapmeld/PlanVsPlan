@@ -83,14 +83,14 @@ var init = exports.init = function (config) {
   
   app.get('/contestants', function(req, res){
     // new contestants
-    var skey = { $lte: Math.random(), limit: 10 };
+    var skey = { $lte: Math.random() };
     if(Math.random() > 0.5){
-      skey = { $gte: Math.random(), limit: 10 };
+      skey = { $gte: Math.random() };
     }
-    votemodel.Vote.findOne({
+    votemodel.Vote.find({
       randomkey: skey,
       supports: "darpa"
-    }, function(err, contender_d){
+    }, { limit: 10 }, function(err, contender_d){
       if(!contender_d){
         // could not find 
         votemodel.Vote.findOne({
@@ -101,7 +101,7 @@ var init = exports.init = function (config) {
           votemodel.Vote.find({
             randomkey: skey,
             supports: "batman"
-          }, function(err, contender_b){
+          }, { limit: 10 },  function(err, contender_b){
       
             if(!contender_b){
               votemodel.Vote.findOne({
@@ -129,7 +129,7 @@ var init = exports.init = function (config) {
         votemodel.Vote.find({
           randomkey: skey,
           supports: "batman"
-        }, function(err, contender_b){
+        }, { limit: 10 }, function(err, contender_b){
       
           if(!contender_b){
             votemodel.Vote.findOne({
