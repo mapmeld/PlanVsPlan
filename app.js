@@ -100,6 +100,27 @@ var init = exports.init = function (config) {
     res.send('updateContestants("' + contender_d.item + '","' + contender_d.pic + '","' + contender_b.item + '","' + contender_b.pic + '");')
   });
   
+  app.get('/submitb', function(req, res){
+    var batobj = new votemodel.Vote({
+      name: req.query['item'],
+      url: req.query['url'],
+      votes: 0
+    });
+    batobj.save(function(err){
+      res.redirect('/');
+    });
+  });
+  app.get('/submitd', function(req, res){
+    var datobj = new votemodel.Vote({
+      name: req.query['item'],
+      url: req.query['url'],
+      votes: 0
+    });
+    datobj.save(function(err){
+      res.redirect('/');
+    });
+  });
+  
   app.get('/voteb', function(req, res){
     // submit a vote for batman
     votemodel.Vote.findOne({ "name": req.query["i"] }, function(err, myvoteitem){
