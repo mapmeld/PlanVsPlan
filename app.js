@@ -66,6 +66,21 @@ var init = exports.init = function (config) {
     });
   });
   
+  app.get('/parks', function(req, res){
+    contender_d = "Bay Line";
+    contender_b = "N Judah";
+    res.render('parks', {
+    	darpa: {
+    		item: contender_d,
+    		pic: "http://assets.inhabitat.com/files/baybridge-highline-ed01.jpg"
+    	},
+    	batman: {
+    		item: contender_b,
+    		pic: "https://d30wms7jgjmff8.cloudfront.net/images/602/large8546f5e58e781306dbdb547bbd52e680.jpg?1341532340"
+    	}
+    });
+  });
+  
   app.get('/contestants', function(req, res){
     // new contestants
     var darpaItems = [

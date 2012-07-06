@@ -1,0 +1,35 @@
+head
+  title DARPA vs. Batman: Parks
+  link(href='/stylesheets/bootstrap.min.css', rel='stylesheet', type='text/css')
+  script(type='text/javascript', src='/scripts/basicversus.js')
+body
+  div.navbar
+    .navbar-inner
+      .container
+        a.brand(href="#") DARPA vs Batman
+        div.nav-collapse
+          ul.nav
+            li.active
+              a(href='/') Showdown
+            li
+              a(href='http://inhabitat.com/bay-line-a-high-line-park-for-san-franciscos-bay-bridge/') About Bay Line
+            li
+              a(href='https://neighborland.com/ideas/sf-more-n-judah-trains-to-ru') About N Judah
+
+  div.container
+    div.hero-unit(style='padding:20px;')
+      h1 Park vs MUNI
+    
+    div.row(style='text-align:center;')
+      .span5
+        a(href="#", onclick="voter()")
+          h3#ditem #{darpa.item}
+          img#dpic.contender(src='#{darpa.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;cursor:pointer;border:1px solid blue;')
+      
+      .span1
+        img#middle(src="http://usrbin.info/wikipediavspredator/media//img/vs.gif", style="margin-top:100px;")
+      
+      .span5
+        a(href="#", onclick="voter()")
+          h3#bitem #{batman.item}
+          img#bpic.contender(src='#{batman.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;cursor:pointer;border:1px solid blue;')
