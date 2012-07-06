@@ -91,7 +91,7 @@ var init = exports.init = function (config) {
       randomkey: skey,
       supports: "darpa"
     }, ['name', 'url'], { limit: 10 }, function(err, contender_d){
-      if(!contender_d){
+      if(!contender_d || contender_d.length == 0){
         // could not find 
         votemodel.Vote.findOne({
           randomkey: { $lte: 1 },
@@ -103,7 +103,7 @@ var init = exports.init = function (config) {
             supports: "batman"
           }, ['name', 'url'], { limit: 10 },  function(err, contender_b){
       
-            if(!contender_b){
+            if(!contender_b || contender_b.length == 0){
               votemodel.Vote.findOne({
                 randomkey: { $lte: 1 },
                 supports: "batman"
@@ -131,7 +131,7 @@ var init = exports.init = function (config) {
           supports: "batman"
         }, ['name', 'url'], { limit: 10 }, function(err, contender_b){
       
-          if(!contender_b){
+          if(!contender_b || contender_b.length == 0){
             votemodel.Vote.findOne({
               randomkey: { $lte: 1 },
               supports: "batman"
