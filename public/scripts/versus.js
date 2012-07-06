@@ -1,17 +1,24 @@
+var firstVote = true;
 function voted(){
-  var d = new Date();
-  var s = document.createElement("script");
-  s.type = "text/javascript";
-  s.src = "/voted?t=" + d.getTime() + "&i=" + document.getElementById("ditem").innerHTML;
-  document.body.appendChild(s);
+  if(!firstVote){
+    var d = new Date();
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "/voted?t=" + d.getTime() + "&i=" + document.getElementById("ditem").innerHTML;
+    document.body.appendChild(s);
+  }
+  firstVote = false;
   changeContest();
 }
 function voteb(){
-  var d = new Date();
-  var s = document.createElement("script");
-  s.type = "text/javascript";
-  s.src = "/voteb?t=" + d.getTime() + "&i=" + document.getElementById("bitem").innerHTML;
-  document.body.appendChild(s);
+  if(!firstVote){
+    var d = new Date();
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "/voteb?t=" + d.getTime() + "&i=" + document.getElementById("bitem").innerHTML;
+    document.body.appendChild(s);
+  }
+  firstVote = false;
   changeContest();
 }
 function changeContest(){
