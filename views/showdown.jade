@@ -2,8 +2,25 @@ head
   title DARPA vs. Batman
   link(href='/stylesheets/slate.min.css', rel='stylesheet', type='text/css')
 body
-  h1 Showdown: DARPA vs. Batman
-  div
-    h4 #{darpa}
-    h4 vs
-    h4 #{batman}
+  div.navbar
+    .navbar-inner
+      .container
+        a.brand(href="#") DARPA vs Batman
+        div.nav-collapse
+          ul.nav
+            li.active Showdown
+            li Support DARPA
+            li Support Batman
+
+  div.container
+    div.hero-unit
+      h1 DARPA vs. Batman
+    
+    div.row
+      .span6
+        h4 #{darpa.item}
+        img.contender(src='#{darpa.pic}')
+      
+      .span6
+        h4 #{batman.item}
+        img.contender(src='#{batman.pic}')

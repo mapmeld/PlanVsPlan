@@ -53,7 +53,7 @@ var init = exports.init = function (config) {
   app.get('/', function(req, res){
     contender_d = "DARPA";
     contender_b = "Batman";
-    res.render('showdown', { darpa: contender_d, batman: contender_b });
+    res.render('showdown', { darpa: { item: contender_d, pic: "" }, batman: { item: contender_b, pic: "" } });
   });
 
   app.get('/auth', middleware.require_auth_browser, routes.index);
