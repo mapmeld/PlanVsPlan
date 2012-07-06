@@ -93,7 +93,7 @@ var init = exports.init = function (config) {
     	{ item: "Batsub", pic: "http://fc07.deviantart.net/fs70/i/2011/187/4/0/batsub_in_gotham_harbor_by_skphile-d3l7d6x.jpg" },
     	{ item: "Grapple Gun", pic: "http://dvice.com/pics/10-bat-gadgets-grapple-gun.jpg" }
     ];
-    var contender_b = darpaItems[ Math.floor(Math.random() * batmanItems.length) ];
+    var contender_b = batmanItems[ Math.floor(Math.random() * batmanItems.length) ];
     
     res.send('updateContestants("' + contender_d.item + '","' + contender_d.pic + '","' + contender_b.item + '","' + contender_b.pic + '");')
   });
