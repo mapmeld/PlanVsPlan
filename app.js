@@ -64,6 +64,39 @@ var init = exports.init = function (config) {
     	}
     });
   });
+  
+  app.get('/contestants', function(req, res){
+    // new contestants
+    var darpaItems = [
+    	{ item: "Balloon Challenge", pic: "http://news.cnet.com/i/bto/20091208/Balloon10_270x406.jpg" },
+    	{ item: "Predator Drone", pic: "http://gearcrave.frsucrave.netdna-cdn.com/wp-content/uploads/2011/04/predator-drone.jpg" },
+    	{ item: "Exoskeleton", pic: "http://www.topsecretwriters.com/wp-content/uploads/2011/03/exoskeleton.jpg" },
+    	{ item: "Big Dog", pic: "http://www.bostondynamics.com/img/BigDog_ClimbRubble.png" },
+    	{ item: "Boss (Autonomous Vehicle)", pic: "http://blogs.intel.com/wp-content/mt-content/com/research/Darpa-d-1.jpg" },
+    	{ item: "Hypersonic Cruise Vehicle", pic: "http://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Speed_is_Life_HTV-2_Reentry_New.jpg/300px-Speed_is_Life_HTV-2_Reentry_New.jpg" },
+    	{ item: "ARPANET circa 1977", pic: "http://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Arpanet_logical_map%2C_march_1977.png/800px-Arpanet_logical_map%2C_march_1977.png" },
+    	{ item: "Cyborg Beetle", pic: "http://www.nature.com/scientificamerican/journal/v303/n6/images/scientificamerican1210-94-I3.jpg" },
+    	{ item: "Maker Faire", pic: "http://zapp5.staticworld.net/images/article/2011/09/maker-faire-5218224.jpg" },
+    	{ item: "Flying Car", pic: "http://www.popsci.com/files/imagecache/article_image_large/articles/5fcbe46e-e623-4337-8179-7aaec26e2b98.Full.jpg" }
+    ];
+    var contender_d = darpaItems[ Math.floor(Math.random() * darpaItems.length) ];
+    
+    var batmanItems = [
+    	{ item: "Batmobile", pic: "http://static.ddmcdn.com/gif/batmobile-resize.jpg" },
+    	{ item: "Batarang", pic: "http://walyou.com/wp-content/uploads/2009/08/cool-batarang-replicas-are-a-must-have-for-batfreaks.jpg" },
+    	{ item: "Bat Signal", pic: "http://upload.wikimedia.org/wikipedia/en/8/81/Gotham_Central_1.jpg" },
+    	{ item: "Batcycle", pic: "http://upload.wikimedia.org/wikipedia/en/e/eb/Batcycle.jpg" },
+    	{ item: "Batpod", pic: "http://a.abcnews.com/images/Entertainment/ht_BatCycle_071212_ssh.jpg" },
+    	{ item: "Batman Utility Belt", pic: "http://www.mrgadget.com.au/wp-content/uploads/2009/10/batman_utility_belt.jpg" },
+    	{ item: "Batboat", pic: "http://www.javelinamx.com/batmobile/batboat.jpg" },
+    	{ item: "Batplane", pic: "http://www.globalentind.com/big-bat-plane.jpg" },
+    	{ item: "Batsub", pic: "http://fc07.deviantart.net/fs70/i/2011/187/4/0/batsub_in_gotham_harbor_by_skphile-d3l7d6x.jpg" },
+    	{ item: "Grapple Gun", pic: "http://dvice.com/pics/10-bat-gadgets-grapple-gun.jpg" }
+    ];
+    var contender_b = darpaItems[ Math.floor(Math.random() * batmanItems.length) ];
+    
+    res.send('updateContestants("' + contender_d.item + '","' + contender_d.pic + '","' + contender_b.item + '","' + contender_b.pic + '");')
+  });
 
   app.get('/auth', middleware.require_auth_browser, routes.index);
   app.post('/auth/add_comment',middleware.require_auth_browser, routes.add_comment);

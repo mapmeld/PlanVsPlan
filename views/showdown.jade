@@ -17,18 +17,19 @@ body
               a(href='/b') Support Batman
 
   div.container
-    div.hero-unit
+    div.hero-unit(style='padding:20px;')
       h1 DARPA vs. Batman
     
     div.row
-      .span6
-        img.contender(src='#{darpa.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;')
-        br
-        h3
-          a(href="#", onclick="voted()") #{darpa.item}
+      .span5
+        a(href="#", onclick="voted()")
+          h3#ditem #{darpa.item}
+          img#dpic.contender(src='#{darpa.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;')
       
-      .span6
-        img.contender(src='#{batman.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;')
-        br
-        h3
-          a(href="#", onclick="voteb()") #{batman.item}
+      .span1
+        img(src="http://usrbin.info/wikipediavspredator/media//img/vs.gif", style="margin-top:100px;")
+      
+      .span5
+        a(href="#", onclick="voteb()")
+          h3#bitem #{batman.item}
+          img#bpic.contender(src='#{batman.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;')
