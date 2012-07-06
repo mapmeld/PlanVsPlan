@@ -77,6 +77,7 @@ var init = exports.init = function (config) {
     	{ item: "ARPANET circa 1977", pic: "http://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Arpanet_logical_map%2C_march_1977.png/800px-Arpanet_logical_map%2C_march_1977.png" },
     	{ item: "Cyborg Beetle", pic: "http://www.nature.com/scientificamerican/journal/v303/n6/images/scientificamerican1210-94-I3.jpg" },
     	{ item: "Maker Faire", pic: "http://zapp5.staticworld.net/images/article/2011/09/maker-faire-5218224.jpg" },
+    	{ item: "Gigapixel Camera", pic: "http://smashingtips.com/wp-content/uploads/2010/02/gigapixel-photography1.jpg" },
     	{ item: "Flying Car", pic: "http://www.popsci.com/files/imagecache/article_image_large/articles/5fcbe46e-e623-4337-8179-7aaec26e2b98.Full.jpg" }
     ];
     var contender_d = darpaItems[ Math.floor(Math.random() * darpaItems.length) ];
@@ -96,6 +97,14 @@ var init = exports.init = function (config) {
     var contender_b = batmanItems[ Math.floor(Math.random() * batmanItems.length) ];
     
     res.send('updateContestants("' + contender_d.item + '","' + contender_d.pic + '","' + contender_b.item + '","' + contender_b.pic + '");')
+  });
+  
+  app.get('/b', function(req, res){
+    res.render('aboutbatman');
+  });
+  
+  app.get('/d', function(req, res){
+    res.render('aboutdarpa');
   });
 
   app.get('/auth', middleware.require_auth_browser, routes.index);

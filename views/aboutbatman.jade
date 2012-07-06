@@ -1,0 +1,41 @@
+head
+  title About Batman
+  link(href='/stylesheets/slate.min.css', rel='stylesheet', type='text/css')
+  script(type='text/javascript', src='/scripts/versus.js')
+body
+  div.navbar
+    .navbar-inner
+      .container
+        a.brand(href="#") DARPA vs Batman
+        div.nav-collapse
+          ul.nav
+            li
+              a(href='/') Showdown
+            li.active
+              a(href='/d') About DARPA
+            li
+              a(href='/b') About Batman
+
+  div.container
+    div.hero-unit(style='padding:20px;')
+      h1 DARPA vs. Batman: About Batman
+    
+    div.row(style='text-align:center;')
+      .span12
+        p
+          a(href='http://en.wikipedia.org/wiki/Batman') Batman
+          span &nbsp;is the secret identify of a vigilante crimefighter in Gotham City.
+        p Batman is distinguished from other superheroes for his use of science and technology to fight crime.
+        br
+        p If you have information about the true identity of Batman, please inform the District Attorney at h.dent@cityofgotham.gov
+        br
+        br
+        h3 Submit a Batman Gadget
+        form.well(action="/submitb", method="POST")
+          span.info Item Name
+          input.x-large(name='item')
+          br
+          span.info Photo URL
+          input.x-large(name='url')
+          hr
+          input.btn.btn-primary(type="submit")

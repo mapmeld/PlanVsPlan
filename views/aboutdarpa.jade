@@ -1,0 +1,35 @@
+head
+  title About Batman
+  link(href='/stylesheets/slate.min.css', rel='stylesheet', type='text/css')
+  script(type='text/javascript', src='/scripts/versus.js')
+body
+  div.navbar
+    .navbar-inner
+      .container
+        a.brand(href="#") DARPA vs Batman
+        div.nav-collapse
+          ul.nav
+            li
+              a(href='/') Showdown
+            li
+              a(href='/d') About DARPA
+            li.active
+              a(href='/b') About Batman
+
+  div.container
+    div.hero-unit(style='padding:20px;')
+      h1 DARPA vs. Batman: About DARPA
+    
+    div.row(style='text-align:center;')
+      .span12
+        p DARPA is the research arm of the Department of Defense.
+        br
+        h3 Submit a (DECLASSIFIED) DARPA Gadget
+        form.well(action="/submitd", method="POST")
+          span.info Item Name
+          input.x-large(name='item')
+          br
+          span.info Photo URL
+          input.x-large(name='url')
+          hr
+          input.btn.btn-primary(type="submit")
