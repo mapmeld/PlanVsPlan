@@ -105,12 +105,12 @@ var init = exports.init = function (config) {
                 supports: "batman"
               }, function(err, contender_b){
                 // found contender_d and now have contender_b
-                res.send('updateContestants("' + contender_d.item + '","' + contender_d.pic + '","' + contender_b.item + '","' + contender_b.pic + '");')            
+                res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_b.name + '","' + contender_b.url + '");')            
               });
             }
             else{
               // found both contender_b and contender_d
-              res.send('updateContestants("' + contender_d.item + '","' + contender_d.pic + '","' + contender_b.item + '","' + contender_b.pic + '");')
+              res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_b.name + '","' + contender_b.url + '");')
             }
           });
           
@@ -130,12 +130,12 @@ var init = exports.init = function (config) {
               supports: "batman"
             }, function(err, contender_b){
               // found contender_d and now have contender_b
-              res.send('updateContestants("' + contender_d.item + '","' + contender_d.pic + '","' + contender_b.item + '","' + contender_b.pic + '");')            
+              res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_b.name + '","' + contender_b.url + '");')            
             });
           }
           else{
             // found both contender_b and contender_d
-            res.send('updateContestants("' + contender_d.item + '","' + contender_d.pic + '","' + contender_b.item + '","' + contender_b.pic + '");')
+            res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_b.name + '","' + contender_b.url + '");')
           }
         });
       }
