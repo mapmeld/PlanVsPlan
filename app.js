@@ -93,10 +93,12 @@ var init = exports.init = function (config) {
     }, ['name', 'url'], { limit: 10 }, function(err, contender_d){
       if(!contender_d || contender_d.length == 0){
         // could not find 
-        votemodel.Vote.findOne({
+        votemodel.Vote.find({
           randomkey: { $lte: 1 },
           supports: "darpa"
-        }, function(err, contender_d){
+        }, ['name', 'url'], { limit: 10 }, function(err, contender_d){
+          contender_d = contender_d[ Math.floor( Math.random() * contender_d.length ) ];
+        
           // now found contender_d, now find contender_b
           votemodel.Vote.find({
             randomkey: skey,
@@ -104,10 +106,11 @@ var init = exports.init = function (config) {
           }, ['name', 'url'], { limit: 10 },  function(err, contender_b){
       
             if(!contender_b || contender_b.length == 0){
-              votemodel.Vote.findOne({
+              votemodel.Vote.find({
                 randomkey: { $lte: 1 },
                 supports: "batman"
-              }, function(err, contender_b){
+              }, ['name', 'url'], { limit: 10 }, function(err, contender_b){
+                contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
                 // found contender_d and now have contender_b
                 res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_b.name + '","' + contender_b.url + '");')            
               });
@@ -132,10 +135,12 @@ var init = exports.init = function (config) {
         }, ['name', 'url'], { limit: 10 }, function(err, contender_b){
       
           if(!contender_b || contender_b.length == 0){
-            votemodel.Vote.findOne({
+            votemodel.Vote.find({
               randomkey: { $lte: 1 },
               supports: "batman"
-            }, function(err, contender_b){
+            }, ['name', 'url'], { limit: 10 }, function(err, contender_b){
+              contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
+
               // found contender_d and now have contender_b
               res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_b.name + '","' + contender_b.url + '");')            
             });
