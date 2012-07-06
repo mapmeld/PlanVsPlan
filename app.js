@@ -125,8 +125,8 @@ var init = exports.init = function (config) {
         for(var i=0;i<batmanItems.length;i++){
           if(batmanItems[i].item == req.query["i"]){
             myvoteitem = new votemodel.Vote({
-              "name": "",
-              "url": "",
+              "name": batmanItems[i].item,
+              "url": batmanItems[i].pic,
               "votes": 1
             });
             break;
@@ -164,8 +164,8 @@ var init = exports.init = function (config) {
         for(var i=0;i<darpaItems.length;i++){
           if(darpaItems[i].item == req.query["i"]){
             myvoteitem = new votemodel.Vote({
-              "name": "",
-              "url": "",
+              "name": darpaItems[i].item,
+              "url": darpaItems[i].pic,
               "votes": 1
             });
             break;
