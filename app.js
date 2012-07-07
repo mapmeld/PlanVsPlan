@@ -90,35 +90,35 @@ var init = exports.init = function (config) {
     votemodel.Vote.find({
       randomkey: skey,
       supports: "darpa"
-    }, ['name', 'url'], { limit: 10 }, function(err, contender_d){
+    }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_d){
       if(!contender_d || contender_d.length == 0){
         // could not find 
         votemodel.Vote.find({
           randomkey: { $lte: 1 },
           supports: "darpa"
-        }, ['name', 'url'], { limit: 10 }, function(err, contender_d){
+        }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_d){
           contender_d = contender_d[ Math.floor( Math.random() * contender_d.length ) ];
         
           // now found contender_d, now find contender_b
           votemodel.Vote.find({
             randomkey: skey,
             supports: "batman"
-          }, ['name', 'url'], { limit: 10 },  function(err, contender_b){
+          }, ['name', 'url', 'votes'], { limit: 10 },  function(err, contender_b){
       
             if(!contender_b || contender_b.length == 0){
               votemodel.Vote.find({
                 randomkey: { $lte: 1 },
                 supports: "batman"
-              }, ['name', 'url'], { limit: 10 }, function(err, contender_b){
+              }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_b){
                 contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
                 // found contender_d and now have contender_b
-                res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_b.name + '","' + contender_b.url + '");')            
+                res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '");')
               });
             }
             else{
               // found both contender_b and contender_d
               contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
-              res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_b.name + '","' + contender_b.url + '");')
+              res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '");')
             }
           });
           
@@ -132,23 +132,23 @@ var init = exports.init = function (config) {
         votemodel.Vote.find({
           randomkey: skey,
           supports: "batman"
-        }, ['name', 'url'], { limit: 10 }, function(err, contender_b){
+        }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_b){
       
           if(!contender_b || contender_b.length == 0){
             votemodel.Vote.find({
               randomkey: { $lte: 1 },
               supports: "batman"
-            }, ['name', 'url'], { limit: 10 }, function(err, contender_b){
+            }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_b){
               contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
 
               // found contender_d and now have contender_b
-              res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_b.name + '","' + contender_b.url + '");')            
+              res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '");')
             });
           }
           else{
             // found both contender_b and contender_d
             contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
-            res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_b.name + '","' + contender_b.url + '");')
+            res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '");')
           }
         });
       }
