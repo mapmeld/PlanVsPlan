@@ -83,7 +83,7 @@ var init = exports.init = function (config) {
   
   app.get('/contestants', function(req, res){
     var topics = [ "darpa", "batman" ];
-    if(req.query["topic"] != ""){
+    if(req.query["topic"] == "101"){
       topics = [ "bayline", "njudah" ];
     }
     // new contestants
