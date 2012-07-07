@@ -82,6 +82,10 @@ var init = exports.init = function (config) {
   });
   
   app.get('/contestants', function(req, res){
+    var topics = [ "darpa", "batman" ];
+    if(req.query["topic"] != ""){
+      topics = [ "bayline", "njudah" ];
+    }
     // new contestants
     var skey = { $lte: Math.random() };
     if(Math.random() > 0.5){
@@ -89,26 +93,26 @@ var init = exports.init = function (config) {
     }
     votemodel.Vote.find({
       randomkey: skey,
-      supports: "darpa"
+      supports: topics[0]
     }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_d){
       if(!contender_d || contender_d.length == 0){
         // could not find 
         votemodel.Vote.find({
           randomkey: { $lte: 1 },
-          supports: "darpa"
+          supports: topics[0]
         }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_d){
           contender_d = contender_d[ Math.floor( Math.random() * contender_d.length ) ];
         
           // now found contender_d, now find contender_b
           votemodel.Vote.find({
             randomkey: skey,
-            supports: "batman"
+            supports: topics[1]
           }, ['name', 'url', 'votes'], { limit: 10 },  function(err, contender_b){
       
             if(!contender_b || contender_b.length == 0){
               votemodel.Vote.find({
                 randomkey: { $lte: 1 },
-                supports: "batman"
+                supports: topics[1]
               }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_b){
                 contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
                 // found contender_d and now have contender_b
@@ -131,13 +135,13 @@ var init = exports.init = function (config) {
         // found contender_d but not yet contender_b
         votemodel.Vote.find({
           randomkey: skey,
-          supports: "batman"
+          supports: topics[1]
         }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_b){
       
           if(!contender_b || contender_b.length == 0){
             votemodel.Vote.find({
               randomkey: { $lte: 1 },
-              supports: "batman"
+              supports: topics[1]
             }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_b){
               contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
 

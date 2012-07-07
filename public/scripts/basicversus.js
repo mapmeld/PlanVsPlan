@@ -15,13 +15,15 @@ function changeContest(){
   var d = new Date();
   var s = document.createElement("script");
   s.type = "text/javascript";
-  s.src = "/contestants?t=" + d.getTime();
+  s.src = "/contestants?topic=101&t=" + d.getTime();
   document.body.appendChild(s);
 }
-function updateContestants(ditem, dpic, bitem, bpic){
+function updateContestants(ditem, dpic, dvotes, bitem, bpic, bvotes){
   document.getElementById("ditem").innerHTML = ditem;
   document.getElementById("dpic").src = dpic;
+  document.getElementById("dvotes").innerHTML = dvotes;
   document.getElementById("bitem").innerHTML = bitem;
   document.getElementById("bpic").src = bpic;
+  document.getElementById("bvotes").innerHTML = bvotes;
   document.getElementById("middle").src = "http://usrbin.info/wikipediavspredator/media//img/vs.gif";
 }
