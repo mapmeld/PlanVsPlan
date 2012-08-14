@@ -1,26 +1,32 @@
 head
-  title DARPA vs. Batman
+  title Plan vs Plan: DARPA vs Batman
   link(href='/stylesheets/slate.min.css', rel='stylesheet', type='text/css')
   script(type='text/javascript', src='/scripts/versus.js')
 body
   div.navbar
     .navbar-inner
       .container
-        a.brand(href="#") DARPA vs Batman
+        a.brand(href="/") Plan vs Plan
         div.nav-collapse
           ul.nav
             li.active
               a(href='/') Showdown
             li
-              a(href='/d') Support DARPA
+              a(href='/d') Add DARPA item
             li
-              a(href='/b') Support Batman
+              a(href='/b') Add Batman item
 
   div.container
     div.hero-unit(style='padding:20px;')
-      h1 DARPA vs. Batman
+      h1 DARPA vs. Batman:
       p Click the victor
-    
+      div(style='border:1px solid #fff;float:right;padding:15px;')
+        h4 Unaffiliated
+        p
+          span PlanVsPlan and this site are&nbsp;
+          a(href="http://imgur.com/Zqo8k") NOT affiliated
+          span &nbsp;with DARPA, Batman, or DC Comics.
+
     div.row(style='text-align:center;text-decoration:underline;')
       .span5
         a(href="#", onclick="voted()")
