@@ -57,7 +57,8 @@ var init = exports.init = function (config) {
     res.render('showdown', {
     	darpa: {
     		item: contender_d,
-    		pic: "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/DARPA_Logo.jpg/180px-DARPA_Logo.jpg"
+    		pic: "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/DARPA_headquarters.jpg/320px-DARPA_headquarters.jpg",
+    		credit: "CC-BY-SA Coolcaesar"
     	},
     	batman: {
     		item: contender_b,

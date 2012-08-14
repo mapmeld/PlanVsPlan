@@ -30,6 +30,7 @@ function changeContest(){
   document.body.appendChild(s);
 }
 function updateContestants(ditem, dpic, dvotes, bitem, bpic, bvotes){
+  document.getElementById("dcredit").innerHTML = "";
   document.getElementById("ditem").innerHTML = ditem;
   document.getElementById("dpic").src = dpic;
   document.getElementById("dvotes").innerHTML = dvotes;
