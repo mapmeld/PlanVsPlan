@@ -67,6 +67,20 @@ var init = exports.init = function (config) {
     });
   });
   
+  app.get('/ranking', function(req, res){
+    contender_d = "DARPA";
+    contender_b = "Batman";
+
+    votemodel.Vote.find({ supports: contender_d }).sort('-votes').limit(5).all(function(dposts){ 
+      votemodel.Vote.find({ supports: contender_b }).sort('-votes').limit(5).all(function(bposts){ 
+        res.render('ranking', {
+          d: dposts,
+          b: bposts
+        });
+      });
+    });
+  });
+  
   app.get('/parks', function(req, res){
     contender_d = "Bay Line";
     contender_b = "N Judah";

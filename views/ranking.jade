@@ -1,0 +1,40 @@
+head
+  title Ranking
+  link(href='/stylesheets/slate.min.css', rel='stylesheet', type='text/css')
+  script(type='text/javascript', src='/scripts/versus.js')
+body
+  div.navbar
+    .navbar-inner
+      .container
+        a.brand(href="/") Plan vs Plan
+        div.nav-collapse
+          ul.nav
+            li
+              a(href='/') Showdown
+            li.active
+              a(href='/d') Support DARPA
+            li
+              a(href='/b') Support Batman
+
+  div.container
+    div.hero-unit(style='padding:20px;')
+      h1 Plan vs. Plan: Ranking
+    
+    div.row(style='text-align:center;')
+      .span12
+        h3 Top-Ranked Items
+
+    div.row(style='text-align:center;')
+      .span6
+        .well
+          each dpost in dposts
+            a(href='#{dpost.pic}')
+              img(src='#{dpost.pic}' width='100')
+              span #{dpost.item} (#{dpost.votes} votes)
+
+      .span6
+        .well
+          each bpost in bposts
+            a(href='#{bpost.pic}')
+              img(src='#{bpost.pic}' width='100')
+              span #{bpost.item} (#{dpost.votes} votes)
