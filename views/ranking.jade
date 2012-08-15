@@ -28,13 +28,13 @@ body
       .span6
         .well
           each dpost in dposts
-            a(href='#{dpost.pic}')
-              img(src='#{dpost.pic}', width='100')
-              span #{dpost.item} (#{dpost.votes} votes)
+            a(href='#{dpost.url}')
+              img(src='#{dpost.url}', width='100')
+              span #{dpost.name} (#{dpost.votes} votes)
 
       .span6
         .well
           each bpost in bposts
-            a(href='#{bpost.pic}')
-              img(src='#{bpost.pic}', width='100')
-              span #{bpost.item} (#{bpost.votes} votes)
+            a(href='#{bpost.url}')
+              img(src='#{bpost.url}', width='100')
+              span #{bpost.name} (#{bpost.votes} votes)
