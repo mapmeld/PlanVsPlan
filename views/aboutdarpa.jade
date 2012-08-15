@@ -12,9 +12,9 @@ body
             li
               a(href='/') Showdown
             li.active
-              a(href='/d') Support DARPA
+              a(href='/d') Add DARPA Item
             li
-              a(href='/b') Support Batman
+              a(href='/b') Add Batman Item
 
   div.container
     div.hero-unit(style='padding:20px;')
@@ -23,6 +23,12 @@ body
     div.row(style='text-align:center;')
       .span12
         h3 DARPA is the research arm of the Department of Defense.
+        div(style='border:1px solid #fff;padding:15px;')
+          h4 Unaffiliated
+          p
+            span PlanVsPlan and this page are&nbsp;
+            a(href="http://imgur.com/Zqo8k") NOT affiliated
+            span &nbsp;with DARPA, Batman, or DC Comics.
         br
         h3 Submit an UNCLASSIFIED DARPA Gadget
         form.well(action="/submitd", method="GET")
