@@ -71,8 +71,8 @@ var init = exports.init = function (config) {
     contender_d = "DARPA";
     contender_b = "Batman";
 
-    votemodel.Vote.find({ supports: contender_d }).sort('-votes').limit(5).all(function(dposts){ 
-      votemodel.Vote.find({ supports: contender_b }).sort('-votes').limit(5).all(function(bposts){ 
+    votemodel.Vote.find({ supports: contender_d }).sort('-votes').limit(5).exec(function(err, dposts){ 
+      votemodel.Vote.find({ supports: contender_b }).sort('-votes').limit(5).exec(function(err, bposts){ 
         res.render('ranking', {
           d: dposts,
           b: bposts
@@ -106,29 +106,17 @@ var init = exports.init = function (config) {
     if(Math.random() > 0.5){
       skey = { $gte: Math.random() };
     }
-    votemodel.Vote.find({
-      randomkey: skey,
-      supports: topics[0]
-    }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_d){
+    votemodel.Vote.find({ randomkey: skey, supports: topics[0] }).select('name url votes').limit(10).exec(function(err, contender_d){
       if(!contender_d || contender_d.length == 0){
         // could not find 
-        votemodel.Vote.find({
-          randomkey: { $lte: 1 },
-          supports: topics[0]
-        }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_d){
+        votemodel.Vote.find({ randomkey: { $lte: 1 }, supports: topics[0] }).select('name url votes').limit(10).exec(function(err, contender_d){
           contender_d = contender_d[ Math.floor( Math.random() * contender_d.length ) ];
         
           // now found contender_d, now find contender_b
-          votemodel.Vote.find({
-            randomkey: skey,
-            supports: topics[1]
-          }, ['name', 'url', 'votes'], { limit: 10 },  function(err, contender_b){
+          votemodel.Vote.find({ randomkey: skey, supports: topics[1] }).select('name url votes').limit(10).exec(function(err, contender_b){
       
             if(!contender_b || contender_b.length == 0){
-              votemodel.Vote.find({
-                randomkey: { $lte: 1 },
-                supports: topics[1]
-              }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_b){
+              votemodel.Vote.find({ randomkey: { $lte: 1 }, supports: topics[1] }).select('name url votes').limit(10).exec(function(err, contender_b){
                 contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
                 // found contender_d and now have contender_b
                 res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '");')
@@ -148,16 +136,10 @@ var init = exports.init = function (config) {
         contender_d = contender_d[ Math.floor( Math.random() * contender_d.length ) ];
       
         // found contender_d but not yet contender_b
-        votemodel.Vote.find({
-          randomkey: skey,
-          supports: topics[1]
-        }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_b){
+        votemodel.Vote.find({ randomkey: skey, supports: topics[1] }).select('name url votes').limit(10).exec(function(err, contender_b){
       
           if(!contender_b || contender_b.length == 0){
-            votemodel.Vote.find({
-              randomkey: { $lte: 1 },
-              supports: topics[1]
-            }, ['name', 'url', 'votes'], { limit: 10 }, function(err, contender_b){
+            votemodel.Vote.find({ randomkey: { $lte: 1 }, supports: topics[1] }).select('name url votes').limit(10).exec(function(err, contender_b){
               contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
 
               // found contender_d and now have contender_b
@@ -202,7 +184,7 @@ var init = exports.init = function (config) {
   
   app.get('/voteb', function(req, res){
     // submit a vote for batman
-    votemodel.Vote.findOne({ "name": req.query["i"] }, function(err, myvoteitem){
+    votemodel.Vote.findOne({ "name": req.query["i"] }).exec(function(err, myvoteitem){
       if(!err && myvoteitem){
         myvoteitem.votes++;
         myvoteitem.save(function(err){ });
@@ -212,7 +194,7 @@ var init = exports.init = function (config) {
   });
   app.get('/voted', function(req, res){
     // submit a vote for darpa
-    votemodel.Vote.findOne({ "name": req.query["i"] }, function(err, myvoteitem){
+    votemodel.Vote.findOne({ "name": req.query["i"] }).exec(function(err, myvoteitem){
       if(!err && myvoteitem){
         myvoteitem.votes++;
         myvoteitem.save(function(err){
