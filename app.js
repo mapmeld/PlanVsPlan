@@ -74,8 +74,8 @@ var init = exports.init = function (config) {
     votemodel.Vote.find({ supports: contender_d }).sort('-votes').limit(5).exec(function(err, dposts){ 
       votemodel.Vote.find({ supports: contender_b }).sort('-votes').limit(5).exec(function(err, bposts){ 
         res.render('ranking', {
-          d: dposts,
-          b: bposts
+          dposts: dposts,
+          bposts: bposts
         });
       });
     });
