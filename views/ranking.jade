@@ -11,7 +11,9 @@ body
           ul.nav
             li
               a(href='/') Showdown
-            li.active
+            li
+              a.active(href='/ranking') Ranking
+            li
               a(href='/d') Add DARPA Item
             li
               a(href='/b') Add Batman Item
@@ -24,13 +26,14 @@ body
       .span12
         h3 Top-Ranked Items
 
-    div.row(style='text-align:center;')
+    div.row(style='text-align:left;')
       .span6
         .well
           each dpost in dposts
             a(href='#{dpost.url}')
               img(src='#{dpost.url}', width='100')
-              span #{dpost.name} (#{dpost.votes} votes)
+              span(style='padding-left:15px;') #{dpost.name} (#{dpost.votes} votes)
+            br
             br
 
       .span6
@@ -38,5 +41,6 @@ body
           each bpost in bposts
             a(href='#{bpost.url}')
               img(src='#{bpost.url}', width='100')
-              span #{bpost.name} (#{bpost.votes} votes)
+              span(style='padding-left:15px;') #{bpost.name} (#{bpost.votes} votes)
+            br
             br
