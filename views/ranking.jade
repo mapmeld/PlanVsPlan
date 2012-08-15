@@ -29,12 +29,12 @@ body
         .well
           each dpost in dposts
             a(href='#{dpost.pic}')
-              img(src='#{dpost.pic}' width='100')
+              img(src='#{dpost.pic}', width='100')
               span #{dpost.item} (#{dpost.votes} votes)
 
       .span6
         .well
           each bpost in bposts
             a(href='#{bpost.pic}')
-              img(src='#{bpost.pic}' width='100')
+              img(src='#{bpost.pic}', width='100')
               span #{bpost.item} (#{dpost.votes} votes)
