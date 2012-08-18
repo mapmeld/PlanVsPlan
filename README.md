@@ -1,8 +1,14 @@
-# About DARPAvsBatman
+# About PlanVsPlan
 
 This is a simple app experimenting with a competition between two plans or programs, with user submissions possible to aid either side.
 
 Inspired by [Wikipedia Vs Predator](http://wikipediavspredator.com).
+
+Coming soon: create your own competitions!
+
+## About the DARPA vs Batman competition
+
+This competition is NOT affiliated with or endorsed by DARPA, Batman, or DC Comics.
 
 Future iterations could inform users about DARPA projects and costs, but as a private citizen Batman's gadgets and budgets are not available for analysis.
 
@@ -14,7 +20,7 @@ Poang ([github](https://github.com/BeyondFog/Poang)) is a Node.js/MongoDB app bu
 
 For testing, Poang uses the [Mocha](http://visionmedia.github.com/mocha/) test framework, [should](https://github.com/visionmedia/should.js) for assertions, [Sinon.JS](http://sinonjs.org/) for mocks & stubs, and [Zombie.js](http://zombie.labnotes.org/) for lightweight integration testing.
 
-For more details, please see Steve's [blog post](http://blog.beyondfog.com/?p=222) that walks through the various tests in Poang.
+For more details, please see [this blog post](http://blog.beyondfog.com/?p=222) that walks through the various tests in Poang.
 
 ## Local Installation
  
