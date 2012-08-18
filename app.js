@@ -52,6 +52,10 @@ var init = exports.init = function (config) {
   
   // Routes
   app.get('/', function(req, res){
+    res.render('homepage');
+  });
+  
+  app.get('/dvb', function(req, res){
     contender_d = "DARPA";
     contender_b = "Batman";
     res.render('showdown', {
