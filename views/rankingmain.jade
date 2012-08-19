@@ -1,0 +1,56 @@
+head
+  title Ranking
+  link(href='/stylesheets/slate.min.css', rel='stylesheet', type='text/css')
+  script(type='text/javascript', src='/scripts/versus.js')
+body
+  div.navbar
+    .navbar-inner
+      .container
+        a.brand(href="/") Plan vs Plan
+        div.nav-collapse
+          ul.nav
+            li
+              a(href='/dvb') Showdown
+            li
+              a.active(href='/ranking') Ranking
+            li
+              a(href='/d') Add DARPA Item
+            li
+              a(href='/b') Add Batman Item
+
+  div.container
+    div.row
+      .span8
+        div.hero-unit(style='padding:20px;')
+          h1 Plan vs Plan: Ranking
+          
+      .span4
+        div(style='border:1px solid #fff;border-radius:8px;padding:15px;')
+          h4 Disclaimer
+          p
+            span PlanVsPlan and this site are&nbsp;
+            a(href="#") NOT affiliated
+            span &nbsp;with DARPA, Batman, or DC Comics.
+    
+    div.row(style='text-align:center;')
+      .span12
+        h3 Top-Ranked Items
+
+    div.row(style='text-align:left;')
+      .span6
+        .well
+          each dpost in dposts
+            a(href='#{dpost.url}')
+              img(src='#{dpost.url}', width='100')
+              span(style='padding-left:15px;') #{dpost.name} (#{dpost.votes} votes)
+            br
+            br
+
+      .span6
+        .well
+          each bpost in bposts
+            a(href='#{bpost.url}')
+              img(src='#{bpost.url}', width='100')
+              span(style='padding-left:15px;') #{bpost.name} (#{bpost.votes} votes)
+            br
+            br

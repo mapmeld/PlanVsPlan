@@ -74,12 +74,7 @@ var init = exports.init = function (config) {
   
   app.get('/ranking', function(req, res){
 
-    if(req.query["topic"] == "101"){
-      contender_d = "centralpark";
-      contender_b = "goldengatepark";
-      rankvotes(contender_d, contender_b);
-    }
-    else if(req.query["topic"]){
+    if(req.query["topic"]){
       contestmodel.Contest.findOne({ _id: req.query["topic"] }).exec(function(err, doc){
         rankvotes(doc.ditem.name, doc.bitem.name);
       });
@@ -94,10 +89,18 @@ var init = exports.init = function (config) {
   function rankvotes(contender_d, contender_b){
     votemodel.Vote.find({ supports: contender_d }).sort('-votes').limit(5).exec(function(err, dposts){ 
       votemodel.Vote.find({ supports: contender_b }).sort('-votes').limit(5).exec(function(err, bposts){ 
-        res.render('ranking', {
-          dposts: dposts,
-          bposts: bposts
-        });
+        if((contender_d == "darpa") && (contender_b == "batman")){
+          res.render('ranking', {
+            dposts: dposts,
+            bposts: bposts
+          });
+        }
+        else{
+          res.render('rankingmain', {
+            dposts: dposts,
+            bposts: bposts
+          });
+        }
       });
     });
   }
