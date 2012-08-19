@@ -1,24 +1,26 @@
 head
-  title DARPA vs. Batman: Parks
+  title Plan vs Plan: Parks
   link(href='/stylesheets/bootstrap.min.css', rel='stylesheet', type='text/css')
   script(type='text/javascript', src='/scripts/basicversus.js')
 body
   div.navbar
     .navbar-inner
       .container
-        a.brand(href="#") DARPA vs Batman
+        a.brand(href="/") Plan vs Plan
         div.nav-collapse
           ul.nav
             li.active
-              a(href='/') Showdown
+              a(href='/parks') Showdown
             li
-              a(href='http://inhabitat.com/bay-line-a-high-line-park-for-san-franciscos-bay-bridge/') Support Bay Line
+              a(href='/parkranking') Ranking
             li
-              a(href='https://neighborland.com/ideas/sf-more-n-judah-trains-to-ru') Support N Judah
+              a(href='/additem?support=CentralPark') Support Central Park
+            li
+              a(href='/additem?support=GoldenGatePark') Support Golden Gate Park
 
   div.container
     div.hero-unit(style='padding:20px;')
-      h1 Park vs MUNI
+      h1 Central Park vs Golden Gate Park
     
     div.row(style='text-align:center;')
       .span5
@@ -29,7 +31,7 @@ body
           span#dvotes
       
       .span1
-        img#middle(src="http://usrbin.info/wikipediavspredator/media//img/vs.gif", style="margin-top:100px;")
+        img#middle(src="http://i.imgur.com/P8VmU.png", style="margin-top:100px;")
       
       .span5
         a(href="#", onclick="voter()")

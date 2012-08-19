@@ -61,12 +61,12 @@ var init = exports.init = function (config) {
     res.render('showdown', {
     	darpa: {
     		item: contender_d,
-    		pic: "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/DARPA_headquarters.jpg/320px-DARPA_headquarters.jpg",
+    		pic: "http://i.imgur.com/XWPSG.jpg",
     		credit: "CC-BY-SA Coolcaesar"
     	},
     	batman: {
     		item: contender_b,
-    		pic: "http://upload.wikimedia.org/wikipedia/en/a/a7/Batman_Lee.png"
+    		pic: "http://i.imgur.com/9zsng.png"
     	}
     });
   });
