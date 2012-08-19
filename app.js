@@ -163,18 +163,14 @@ var init = exports.init = function (config) {
   });
   
   app.get('/contestants', function(req, res){
-    if(req.query["topic"] == "101"){
-      var topics = [ "centralpark", "goldengatepark" ];
-      newContestants(topics);
-    }
-    else if(req.query["topic"]){
+    if(req.query["topic"]){
       contestmodel.Contest.findOne({ _id: req.query["topic"] }).select('ditem bitem').exec(function(err, doc){
-        newContestants([ doc.ditem.name, doc.bitem.name ]);
+        newContestants([ doc.ditem.name, doc.bitem.name ], res);
       });
     }
     else{
       var topics = [ "darpa", "batman" ];
-      newContestants(topics);
+      newContestants(topics, res);
     }
   });
   
@@ -185,7 +181,7 @@ var init = exports.init = function (config) {
     return src;
   }
   
-  function newContestants(topics){
+  function newContestants(topics, res){
     // new contestants
     for(var t=0;t<topics.length;t++){
       topics[t] = replaceAll(topics[t].toLowerCase(),' ','');
