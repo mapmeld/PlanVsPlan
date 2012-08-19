@@ -11,6 +11,7 @@ var auth = require('./auth')
     , routes = require('./routes')
     , middleware = require('./middleware')
     , votemodel = require('./votemodel')
+    , contestmodel = require('./contestmodel')
     ;
 
 var HOUR_IN_MILLISECONDS = 3600000;
@@ -72,13 +73,25 @@ var init = exports.init = function (config) {
   });
   
   app.get('/ranking', function(req, res){
-    contender_d = "darpa";
-    contender_b = "batman";
+
     if(req.query["topic"] == "101"){
       contender_d = "centralpark";
       contender_b = "goldengatepark";
+      rankvotes(contender_d, contender_b);
     }
-
+    else if(req.query["topic"]){
+      contestmodel.Contest.findOne({ _id: req.query["topic"] }).exec(function(err, doc){
+        rankvotes(doc.ditem.name, doc.bitem.name);
+      });
+    }
+    else{
+      contender_d = "darpa";
+      contender_b = "batman";
+      rankvotes(contender_d, contender_b);
+    }
+  });
+  
+  function rankvotes(contender_d, contender_b){
     votemodel.Vote.find({ supports: contender_d }).sort('-votes').limit(5).exec(function(err, dposts){ 
       votemodel.Vote.find({ supports: contender_b }).sort('-votes').limit(5).exec(function(err, bposts){ 
         res.render('ranking', {
@@ -87,15 +100,37 @@ var init = exports.init = function (config) {
         });
       });
     });
-  });
+  }
   
   app.get('/vs', function(req, res){
     if(req.query['topic'] == '101'){
       res.redirect('/parks');
     }
     else{
-      res.render('vs');
+      contestmodel.Contest.findOne({ _id: req.query["topic"] }).exec(function(err, doc){
+        res.render('vs', { contest: doc })
+      });
     }
+  });
+  
+  app.get('/buildparks', function(req, res){
+    var parks = new contestmodel.Contest({
+      mainname: "Central Park vs Golden Gate Park",
+      mainphoto: "http://i.imgur.com/psJdY.jpg",
+      ditem: {
+        name: "Central Park",
+        startpic: "http://i.imgur.com/OevjR.jpg",
+        details: "http://en.wikipedia.org/wiki/Central_Park"
+      },
+      bitem: {
+        name: "Golden Gate Park",
+        startpic: "http://i.imgur.com/psJdY.jpg",
+        details: "http://en.wikipedia.org/wiki/Golden_Gate_Park"
+      }
+    });
+    parks.save(function(err){
+      console.log(err);
+    });
   });
   
   app.get('/parks', function(req, res){
@@ -116,15 +151,51 @@ var init = exports.init = function (config) {
   });
   
   app.get('/additem', function(req, res){
-    res.render('additem', { topic: req.query['topic'], support: req.query['support'], supportother: "" })
+    contestmodel.Contest.findOne({ _id: req.query["topic"] }).exec(function(err, doc){
+      // make support bitem the default
+      var findsupportslug = replaceAll(doc.bitem.name.toLowerCase(), ' ', '');
+      var otherslug = replaceAll(doc.ditem.name.toLowerCase(), ' ', '');
+      var supportitem = doc.bitem;
+      var supportother = doc.ditem;
+      if(otherslug == req.query['support']){
+        // change values if page actually is for ditem
+        findsupportslug = replaceAll(doc.ditem.name.toLowerCase(), ' ', '');
+        otherslug = replaceAll(doc.bitem.name.toLowerCase(), ' ', '');
+        supportitem = doc.ditem;
+        supportother = doc.bitem;
+      }
+      res.render('additem', { support: supportitem, supportslug: findsupportslug, supportother: supportother, supportotherslug: otherslug, topic: req.query["topic"] });
+    });
   });
   
   app.get('/contestants', function(req, res){
-    var topics = [ "darpa", "batman" ];
     if(req.query["topic"] == "101"){
-      topics = [ "centralpark", "goldengatepark" ];
+      var topics = [ "centralpark", "goldengatepark" ];
+      newContestants(topics);
     }
+    else if(req.query["topic"]){
+      contestmodel.Contest.findOne({ _id: req.query["topic"] }).select('ditem bitem').exec(function(err, doc){
+        newContestants([ doc.ditem.name, doc.bitem.name ]);
+      });
+    }
+    else{
+      var topics = [ "darpa", "batman" ];
+      newContestants(topics);
+    }
+  });
+  
+  function replaceAll(src, oldr, newr){
+    while(src.indexOf(oldr) > -1){
+      src = src.replace(oldr, newr);
+    }
+    return src;
+  }
+  
+  function newContestants(topics){
     // new contestants
+    for(var t=0;t<topics.length;t++){
+      topics[t] = replaceAll(topics[t].toLowerCase(),' ','');
+    }
     var skey = { $lte: Math.random() };
     if(Math.random() > 0.5){
       skey = { $gte: Math.random() };
@@ -177,7 +248,7 @@ var init = exports.init = function (config) {
         });
       }
     });
-  });
+  }
   
   app.get('/submit', function(req, res){
     var submitted = new votemodel.Vote({

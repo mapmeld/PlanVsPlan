@@ -1,5 +1,5 @@
 head
-  title Support #{support}
+  title Support #{support.name}
   link(href='/stylesheets/slate.min.css', rel='stylesheet', type='text/css')
   script(type='text/javascript', src='/scripts/versus.js')
 body
@@ -13,16 +13,16 @@ body
               a(href='/vs?topic=#{topic}') Showdown
             li
               a(href='/ranking?topic=#{topic}') Ranking
-            li.active
-              a(href='/additem?topic=#{topic}&support=#{support}') Support #{support}
             li
-              a(href='/additem?topic=#{topic}&support=#{supportother}') Support #{supportother}
+              a(href='/additem?topic=#{topic}&support=#{supportslug}') Support #{support.name}
+            li
+              a(href='/additem?topic=#{topic}&support=#{supportotherslug}') Support #{supportother.name}
 
   div.container
     .row
       .span8
         div.hero-unit(style='padding:20px;')
-          h1 Plan vs Plan: #{support}
+          h1 Plan vs Plan: #{support.name}
       .span4
         div(style='border:1px solid #fff;border-radius:8px;padding:15px;')
           h4 Disclaimer
@@ -33,10 +33,10 @@ body
     
     .row(style='text-align:center;')
       .span12
-        h3 Submit a post in favor of #{support}
+        h3 Submit a post in favor of #{support.name}:
         form.well(action="/submit", method="GET")
           input(name='topic', type='hidden', value='#{topic}')
-          input(name='support', type='hidden', value='#{support}')
+          input(name='support', type='hidden', value='#{supportslug}')
           label.info Item Name
           input.x-large(name='item')
           br
