@@ -86,16 +86,18 @@ var init = exports.init = function (config) {
   });
   
   app.get('/parks', function(req, res){
-    contender_d = "bayline";
-    contender_b = "njudah";
+    contender_d = "Central Park";
+    contender_b = "Golden Gate Park";
     res.render('parks', {
     	darpa: {
     		item: contender_d,
-    		pic: "http://assets.inhabitat.com/files/baybridge-highline-ed01.jpg"
+    		pic: "http://i.imgur.com/hATFd.jpg",
+    		credit: "CC-BY-SA Edward Betts"
     	},
     	batman: {
     		item: contender_b,
-    		pic: "https://d30wms7jgjmff8.cloudfront.net/images/602/large8546f5e58e781306dbdb547bbd52e680.jpg?1341532340"
+    		pic: "http://i.imgur.com/psJdY.jpg",
+    		credit: "CC-BY-SA Joe Mabel"
     	}
     });
   });
