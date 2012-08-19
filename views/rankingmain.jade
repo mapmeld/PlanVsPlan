@@ -38,7 +38,7 @@ body
 
     div.row(style='text-align:left;')
       .span6
-        h4 #{ditem.name}
+        h3 #{ditem.name}
         .well
           each dpost in dposts
             a(href='#{dpost.url}')
@@ -48,6 +48,7 @@ body
             br
 
       .span6
+        h3 #{bitem.name}
         .well
           each bpost in bposts
             a(href='#{bpost.url}')
