@@ -24,7 +24,7 @@ body
     
     div.row(style='text-align:center;')
       .span5
-        a(href="#", onclick="voter()")
+        a(href="#", onclick="voter(0)")
           h3#ditem #{ditem.item}
           img#dpic.contender(src='#{ditem.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;cursor:pointer;border:1px solid blue;')
           br
@@ -36,7 +36,7 @@ body
         img#middle(src="http://i.imgur.com/P8VmU.png", style="margin-top:100px;")
       
       .span5
-        a(href="#", onclick="voter()")
+        a(href="#", onclick="voter(1)")
           h3#bitem #{bitem.item}
           img#bpic.contender(src='#{bitem.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;cursor:pointer;border:1px solid blue;')
           br

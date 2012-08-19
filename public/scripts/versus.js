@@ -22,7 +22,7 @@ function voteb(){
   changeContest();
 }
 function changeContest(){
-  $("middle").src = "http://logd.tw.rpi.edu/files/loading.gif";
+  $("middle").src = "http://i.imgur.com/VU0Q4.gif";
   var d = new Date();
   var s = document.createElement("script");
   s.type = "text/javascript";
@@ -38,7 +38,7 @@ function updateContestants(ditem, dpic, dvotes, dcredit, bitem, bpic, bvotes, bc
   $("bitem").innerHTML = bitem;
   $("bpic").src = bpic;
   $("bvotes").innerHTML = bvotes;
-  $("middle").src = "http://usrbin.info/wikipediavspredator/media//img/vs.gif";
+  $("middle").src = "http://i.imgur.com/RY1V1.gif";
 }
 function $(id){
   return document.getElementById(id);

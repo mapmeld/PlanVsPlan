@@ -219,9 +219,18 @@ var init = exports.init = function (config) {
     });
   });
   
+  app.get('/standardvote', function(req, res){
+    votemodel.Vote.findOne({ url: req.query["u"], supports: req.query["support"] }).exec(function(err, myvoteitem){
+      if(!err && myvoteitem){
+        myvoteitem.votes++;
+        myvoteitem.save(function(err){ });
+        res.send("{}");
+      }
+    });
+  });
   app.get('/voteb', function(req, res){
     // submit a vote for batman
-    votemodel.Vote.findOne({ "name": req.query["i"] }).exec(function(err, myvoteitem){
+    votemodel.Vote.findOne({ name: req.query["i"], supports: "batman" }).exec(function(err, myvoteitem){
       if(!err && myvoteitem){
         myvoteitem.votes++;
         myvoteitem.save(function(err){ });
@@ -231,7 +240,7 @@ var init = exports.init = function (config) {
   });
   app.get('/voted', function(req, res){
     // submit a vote for darpa
-    votemodel.Vote.findOne({ "name": req.query["i"] }).exec(function(err, myvoteitem){
+    votemodel.Vote.findOne({ name: req.query["i"], supports: "darpa" }).exec(function(err, myvoteitem){
       if(!err && myvoteitem){
         myvoteitem.votes++;
         myvoteitem.save(function(err){
