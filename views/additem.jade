@@ -1,0 +1,49 @@
+head
+  title Support #{support}
+  link(href='/stylesheets/slate.min.css', rel='stylesheet', type='text/css')
+  script(type='text/javascript', src='/scripts/versus.js')
+body
+  div.navbar
+    .navbar-inner
+      .container
+        a.brand(href="/") Plan vs Plan
+        div.nav-collapse
+          ul.nav
+            li
+              a(href='/vs?topic=#{topic}') Showdown
+            li
+              a(href='/ranking?topic=#{topic}') Ranking
+            li.active
+              a(href='/additem?topic=#{topic}&support=#{support}') Support #{support}
+            li
+              a(href='/additem?topic=#{topic}&support=#{supportother}') Support #{supportother}
+
+  div.container
+    .row
+      .span8
+        div.hero-unit(style='padding:20px;')
+          h1 Plan vs Plan: #{support}
+      .span4
+        div(style='border:1px solid #fff;border-radius:8px;padding:15px;')
+          h4 Disclaimer
+          p
+            span PlanVsPlan and this competition are&nbsp;
+            a(href="#") NOT affiliated
+            span &nbsp;with DARPA, Batman, or DC Comics.
+    
+    .row(style='text-align:center;')
+      .span12
+        h3 Submit a post in favor of #{support}
+        form.well(action="/submit?topic=#{support}&support=#{support}", method="GET")
+          label.info Item Name
+          input.x-large(name='item')
+          br
+          br
+          label.info Picture URL
+          input.x-large(name='url')
+          br
+          br
+          label.info Picture Credit
+          input.x-large(name='credit')
+          hr
+          input.btn.btn-primary(type="submit")

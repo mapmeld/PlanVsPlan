@@ -74,6 +74,10 @@ var init = exports.init = function (config) {
   app.get('/ranking', function(req, res){
     contender_d = "darpa";
     contender_b = "batman";
+    if(req.query["topic"] == "101"){
+      contender_d = "centralpark";
+      contender_b = "goldengatepark";
+    }
 
     votemodel.Vote.find({ supports: contender_d }).sort('-votes').limit(5).exec(function(err, dposts){ 
       votemodel.Vote.find({ supports: contender_b }).sort('-votes').limit(5).exec(function(err, bposts){ 
@@ -83,6 +87,15 @@ var init = exports.init = function (config) {
         });
       });
     });
+  });
+  
+  app.get('/vs', function(req, res){
+    if(req.query['topic'] == '101'){
+      res.redirect('/parks');
+    }
+    else{
+      res.render('vs');
+    }
   });
   
   app.get('/parks', function(req, res){
@@ -102,10 +115,14 @@ var init = exports.init = function (config) {
     });
   });
   
+  app.get('/additem', function(req, res){
+    res.render('additem', { topic: req.query['topic'], support: req.query['support'], supportother: "" })
+  });
+  
   app.get('/contestants', function(req, res){
     var topics = [ "darpa", "batman" ];
     if(req.query["topic"] == "101"){
-      topics = [ "bayline", "njudah" ];
+      topics = [ "centralpark", "goldengatepark" ];
     }
     // new contestants
     var skey = { $lte: Math.random() };
@@ -159,6 +176,20 @@ var init = exports.init = function (config) {
           }
         });
       }
+    });
+  });
+  
+  app.get('/submit', function(req, res){
+    var submitted = new votemodel.Vote({
+      name: req.query['item'],
+      url: req.query['url'],
+      votes: 0,
+      randomkey: Math.random(),
+      supports: req.query['support'],
+      credit: req.query['credit']
+    });
+    submitted.save(function(err){
+      res.redirect('/vs?topic=#{topic}');
     });
   });
   

@@ -7,7 +7,8 @@ var VoteSchema = new Schema({
   url: String,
   votes: Number,
   randomkey: Number,
-  supports: String
+  supports: String,
+  credit: String
 });
 
 var Vote = mongoose.model('Vote', VoteSchema);

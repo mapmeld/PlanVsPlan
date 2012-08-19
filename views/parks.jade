@@ -12,11 +12,11 @@ body
             li.active
               a(href='/parks') Showdown
             li
-              a(href='/parkranking') Ranking
+              a(href='/ranking?topic=101') Ranking
             li
-              a(href='/additem?support=CentralPark') Support Central Park
+              a(href='/additem?topic=101&support=centralpark') Support Central Park
             li
-              a(href='/additem?support=GoldenGatePark') Support Golden Gate Park
+              a(href='/additem?topic=101&support=goldengatepark') Support Golden Gate Park
 
   div.container(style='background-color:#272B30;padding:25px;')
     div.hero-unit(style='padding:20px;')
@@ -32,7 +32,7 @@ body
           br
           span#dvotes(style="font-size:16pt;")
       
-      .span1
+      .span2
         img#middle(src="http://i.imgur.com/P8VmU.png", style="margin-top:100px;")
       
       .span5
