@@ -1,13 +1,19 @@
 var firstVote = true;
+function toslug(name){
+  while(name.indexOf(' ') > -1){
+    name = name.replace(' ','');
+  }
+  return name.toLowerCase();
+}
 function voter(side){
   if(!firstVote){
     var u, support;
     if(side == 0){
-      support = "centralpark";
+      support = toslug(ditem);
       u = $("dpic").src;
     }
     else{
-      support = "goldengatepark";
+      support = toslug(bitem);
       u = $("bpic").src;
     }
     var d = new Date();
@@ -24,7 +30,7 @@ function changeContest(){
   var d = new Date();
   var s = document.createElement("script");
   s.type = "text/javascript";
-  s.src = "/contestants?topic=101&t=" + d.getTime();
+  s.src = "/contestants?topic=" + topic + "&t=" + d.getTime();
   document.body.appendChild(s);
 }
 function updateContestants(ditem, dpic, dvotes, dcredit, bitem, bpic, bvotes, bcredit){
