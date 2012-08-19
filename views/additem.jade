@@ -34,7 +34,7 @@ body
     .row(style='text-align:center;')
       .span12
         h3 Submit a post in favor of #{support}
-        form.well(action="/submit?topic=#{support}&support=#{support}", method="GET")
+        form.well(action="/submit?topic=#{topic}&support=#{support}", method="GET")
           label.info Item Name
           input.x-large(name='item')
           br
