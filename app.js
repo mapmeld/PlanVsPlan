@@ -103,17 +103,12 @@ var init = exports.init = function (config) {
   }
   
   app.get('/vs', function(req, res){
-    if(req.query['topic'] == '101'){
-      res.redirect('/parks');
-    }
-    else{
-      contestmodel.Contest.findOne({ _id: req.query["topic"] }).exec(function(err, doc){
-        res.render('vs', { contest: doc })
-      });
-    }
+    contestmodel.Contest.findOne({ _id: req.query["topic"] }).exec(function(err, doc){
+      res.render('vs', doc);
+    });
   });
   
-  app.get('/buildparks', function(req, res){
+  /*app.get('/buildparks', function(req, res){
     var parks = new contestmodel.Contest({
       mainname: "Central Park vs Golden Gate Park",
       mainphoto: "http://i.imgur.com/psJdY.jpg",
@@ -131,7 +126,7 @@ var init = exports.init = function (config) {
     parks.save(function(err){
       console.log(err);
     });
-  });
+  });*/
   
   app.get('/parks', function(req, res){
     contender_d = "Central Park";
@@ -157,7 +152,7 @@ var init = exports.init = function (config) {
       var otherslug = replaceAll(doc.ditem.name.toLowerCase(), ' ', '');
       var supportitem = doc.bitem;
       var supportother = doc.ditem;
-      if(otherslug == req.query['support']){
+      if((req.query['support'] == 'd') || (otherslug == req.query['support'])){
         // change values if page actually is for ditem
         findsupportslug = replaceAll(doc.ditem.name.toLowerCase(), ' ', '');
         otherslug = replaceAll(doc.bitem.name.toLowerCase(), ' ', '');
