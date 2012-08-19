@@ -25,17 +25,21 @@ body
     div.row(style='text-align:center;')
       .span5
         a(href="#", onclick="voter()")
-          h3#ditem #{darpa.item}
-          img#dpic.contender(src='#{darpa.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;cursor:pointer;border:1px solid blue;')
+          h3#ditem #{ditem.item}
+          img#dpic.contender(src='#{ditem.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;cursor:pointer;border:1px solid blue;')
           br
-          span#dvotes
+          span#dcredit #{ditem.credit}
+          br
+          span#dvotes(style="font-size:16pt;")
       
       .span1
         img#middle(src="http://i.imgur.com/P8VmU.png", style="margin-top:100px;")
       
       .span5
         a(href="#", onclick="voter()")
-          h3#bitem #{batman.item}
-          img#bpic.contender(src='#{batman.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;cursor:pointer;border:1px solid blue;')
+          h3#bitem #{bitem.item}
+          img#bpic.contender(src='#{bitem.pic}', style='margin-left:auto;margin-right:auto;max-width:100%;max-height:350px;cursor:pointer;border:1px solid blue;')
           br
-          span#bvotes
+          span#bcredit #{bitem.credit}
+          br
+          span#bvotes(style="font-size:16pt;")

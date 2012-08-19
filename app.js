@@ -89,12 +89,12 @@ var init = exports.init = function (config) {
     contender_d = "Central Park";
     contender_b = "Golden Gate Park";
     res.render('parks', {
-    	darpa: {
+    	ditem: {
     		item: contender_d,
-    		pic: "http://i.imgur.com/hATFd.jpg",
-    		credit: "CC-BY-SA Edward Betts"
+    		pic: "http://i.imgur.com/OevjR.jpg",
+    		credit: "CC-BY-SA Ed Yourdon"
     	},
-    	batman: {
+    	bitem: {
     		item: contender_b,
     		pic: "http://i.imgur.com/psJdY.jpg",
     		credit: "CC-BY-SA Joe Mabel"
