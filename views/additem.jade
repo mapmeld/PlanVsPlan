@@ -34,7 +34,9 @@ body
     .row(style='text-align:center;')
       .span12
         h3 Submit a post in favor of #{support}
-        form.well(action="/submit?topic=#{topic}&support=#{support}", method="GET")
+        form.well(action="/submit", method="GET")
+          input(name='topic', type='hidden', value='#{topic}')
+          input(name='support', type='hidden', value='#{support}')
           label.info Item Name
           input.x-large(name='item')
           br

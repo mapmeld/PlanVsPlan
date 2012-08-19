@@ -189,7 +189,7 @@ var init = exports.init = function (config) {
       credit: req.query['credit']
     });
     submitted.save(function(err){
-      res.redirect('/vs?topic=#{topic}');
+      res.redirect('/vs?topic=' + req.query['topic']);
     });
   });
   
