@@ -9,21 +9,13 @@ body(style="background-color:#f0f0f0")
     .row
       form.span12(action='/buildnew', method='POST')
         .span4
-          h4 Contest Name
-          input(name='mainname', value='')
-          h4 Contest Thumbnail
-          input(name='mainphoto', value='')
-          h4 VS Icon
-          img(src='http://i.imgur.com/P8VmU.png', width='150')
-
-        .span4
           h4 Side One: Name
           input(name='ditemname', value='')
           h4 Side One: Starting Picture
           input(name='ditempic', value='')
           h4 Side One: Details
           input(name='ditemdetails', value='')
-      
+
         .span4
           h4 Side Two: Name
           input(name='bitemname', value='')
@@ -31,6 +23,16 @@ body(style="background-color:#f0f0f0")
           input(name='bitempic', value='')
           h4 Side Two: Details
           input(name='bitemdetails', value='')
+          
+        .span3
+          h4 Contest Name
+          input(name='mainname', value='')
+          h4 Contest Thumbnail
+          input(name='mainphoto', value='')
+          h4 VS Icon
+          img(src='http://i.imgur.com/P8VmU.png', width='40')
+          br
+          input.btn.btn-primary(type='submit', value='Create')
 
     br
     br
