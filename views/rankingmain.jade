@@ -10,13 +10,13 @@ body
         div.nav-collapse
           ul.nav
             li
-              a(href='/dvb') Showdown
+              a(href='/vs?topic=#{_id}') Showdown
             li
-              a.active(href='/ranking') Ranking
+              a.active(href='/ranking?topic=#{_id}') Ranking
             li
-              a(href='/d') Add DARPA Item
+              a(href='/additem?topic=#{_id}&support=d') Add #{ditem.name} Item
             li
-              a(href='/b') Add Batman Item
+              a(href='/additem?topic=#{_id}&support=b') Add #{bitem.name} Item
 
   div.container
     div.row
@@ -38,6 +38,7 @@ body
 
     div.row(style='text-align:left;')
       .span6
+        h4 #{ditem.name}
         .well
           each dpost in dposts
             a(href='#{dpost.url}')

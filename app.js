@@ -75,35 +75,31 @@ var init = exports.init = function (config) {
   app.get('/ranking', function(req, res){
 
     if(req.query["topic"]){
-      contestmodel.Contest.findOne({ _id: req.query["topic"] }).exec(function(err, doc){
-        rankvotes(doc.ditem.name, doc.bitem.name);
+      contestmodel.Contest.findOne({ _id: req.query["topic"] }).exec(function(err, contest){
+        var ditemslug = replaceAll(contest.ditem.name.toLowerCase(),' ','');
+        votemodel.Vote.find({ supports: ditemslug }).sort('-votes').limit(5).exec(function(err, dposts){ 
+          var bitemslug = replaceAll(contest.bitem.name.toLowerCase(),' ','');
+          votemodel.Vote.find({ supports: bitemslug }).sort('-votes').limit(5).exec(function(err, bposts){ 
+            contest.dposts = dposts;
+            contest.bposts = bposts;
+            res.render('rankingmain', contest);
+          });
+        });
       });
     }
     else{
       contender_d = "darpa";
       contender_b = "batman";
-      rankvotes(contender_d, contender_b);
-    }
-  });
-  
-  function rankvotes(contender_d, contender_b){
-    votemodel.Vote.find({ supports: contender_d }).sort('-votes').limit(5).exec(function(err, dposts){ 
-      votemodel.Vote.find({ supports: contender_b }).sort('-votes').limit(5).exec(function(err, bposts){ 
-        if((contender_d == "darpa") && (contender_b == "batman")){
+      votemodel.Vote.find({ supports: contender_d }).sort('-votes').limit(5).exec(function(err, dposts){ 
+        votemodel.Vote.find({ supports: contender_b }).sort('-votes').limit(5).exec(function(err, bposts){ 
           res.render('ranking', {
             dposts: dposts,
             bposts: bposts
           });
-        }
-        else{
-          res.render('rankingmain', {
-            dposts: dposts,
-            bposts: bposts
-          });
-        }
+        });
       });
-    });
-  }
+    }
+  });
   
   app.get('/vs', function(req, res){
     contestmodel.Contest.findOne({ _id: req.query["topic"] }).exec(function(err, doc){
