@@ -13,7 +13,7 @@ function voter(side){
     var d = new Date();
     var s = document.createElement("script");
     s.type = "text/javascript";
-    s.src = "/standardvote?t=" + d.getTime() + "&u=" + ;
+    s.src = "/standardvote?t=" + d.getTime() + "&u=" + encodeURIComponent(u) + "&support=" + encodeURIComponent(support);
     document.body.appendChild(s);
   }
   firstVote = false;
