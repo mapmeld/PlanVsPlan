@@ -1,5 +1,5 @@
 head
-  title PlanVsPlan: Homepage
+  title PlanVsPlan: New Contest
   link(href='/stylesheets/slate.min.css', rel='stylesheet', type='text/css')
 body(style="background-color:#f0f0f0")
   div.container(style="background-color:#272B30;padding:20px;")
@@ -7,25 +7,30 @@ body(style="background-color:#f0f0f0")
       .hero-unit.span9
         h1 Plan vs Plan
     .row
-      .span4
-        a(href="/dvb")
-          h3 DARPA vs Batman
-          img(src="http://i.imgur.com/EQj1N.jpg")
-        br
-        small Public domain image
-      .span4
-        a(href="/vs?topic=50314381bc7f9f0200000001")
-          h3 Central Park vs Golden Gate Park
-          img(src="http://i.imgur.com/psJdY.jpg")
-        br
-        small Photo CC-BY-SA Joe Mabel
-        
-      .span4
-        h3 Create your own!
-        img(src="http://i.imgur.com/hATFd.jpg")
-        small Photo CC-BY-SA Edward Betts
-        br
-        small Coming Soon
+      form.span12(action='/buildnew', method='POST')
+        .span4
+          h4 Contest Name
+          input(name='mainname', value='')
+          h4 Contest Thumbnail
+          input(name='mainphoto', value='')
+          h4 VS Icon
+          img(src='http://i.imgur.com/P8VmU.png', width='150')
+
+        .span4
+          h4 Side One: Name
+          input(name='ditemname', value='')
+          h4 Side One: Starting Picture
+          input(name='ditempic', value='')
+          h4 Side One: Details
+          input(name='ditemdetails', value='')
+      
+        .span4
+          h4 Side Two: Name
+          input(name='bitemname', value='')
+          h4 Side Two: Starting Picture
+          input(name='bitempic', value='')
+          h4 Side Two: Details
+          input(name='bitemdetails', value='')
 
     br
     br

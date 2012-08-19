@@ -107,25 +107,28 @@ var init = exports.init = function (config) {
     });
   });
   
-  /*app.get('/buildparks', function(req, res){
-    var parks = new contestmodel.Contest({
-      mainname: "Central Park vs Golden Gate Park",
-      mainphoto: "http://i.imgur.com/psJdY.jpg",
+  app.get('/buildnew', function(req, res){
+    res.render('newcontest');
+  });
+  app.post('/buildnew', function(req, res){
+    var contest = new contestmodel.Contest({
+      mainname: req.body.mainname,
+      mainphoto: req.body.mainphoto,
       ditem: {
-        name: "Central Park",
-        startpic: "http://i.imgur.com/OevjR.jpg",
-        details: "http://en.wikipedia.org/wiki/Central_Park"
+        name: req.body.ditemname,
+        startpic: req.body.ditempic,
+        details: req.body.ditemdetails
       },
       bitem: {
-        name: "Golden Gate Park",
-        startpic: "http://i.imgur.com/psJdY.jpg",
-        details: "http://en.wikipedia.org/wiki/Golden_Gate_Park"
+        name: req.body.bitemname,
+        startpic: req.body.bitempic,
+        details: req.body.bitemdetails
       }
     });
-    parks.save(function(err){
-      console.log(err);
+    contest.save(function(err){
+      res.redirect('/vs?topic=' + contest._id);
     });
-  });*/
+  });
   
   app.get('/parks', function(req, res){
     contender_d = "Central Park";
