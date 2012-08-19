@@ -142,13 +142,13 @@ var init = exports.init = function (config) {
               votemodel.Vote.find({ randomkey: { $lte: 1 }, supports: topics[1] }).select('name url votes').limit(10).exec(function(err, contender_b){
                 contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
                 // found contender_d and now have contender_b
-                res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '");')
+                res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + (contender_d.credit || "") + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '","' + (contender_b.credit || "") + '");')
               });
             }
             else{
               // found both contender_b and contender_d
               contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
-              res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '");')
+              res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + (contender_d.credit || "") + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '","' + (contender_b.credit || "") + '");')
             }
           });
           
@@ -166,13 +166,13 @@ var init = exports.init = function (config) {
               contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
 
               // found contender_d and now have contender_b
-              res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '");')
+              res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + (contender_d.credit || "") + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '","' + (contender_b.credit || "") + '");')
             });
           }
           else{
             // found both contender_b and contender_d
             contender_b = contender_b[ Math.floor( Math.random() * contender_b.length ) ];
-            res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '");')
+            res.send('updateContestants("' + contender_d.name + '","' + contender_d.url + '","' + contender_d.votes + '","' + (contender_d.credit || "") + '","' + contender_b.name + '","' + contender_b.url + '","' + contender_b.votes + '","' + (contender_b.credit || "") + '");')
           }
         });
       }
