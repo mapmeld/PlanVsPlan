@@ -17,5 +17,5 @@ var ContestSchema = new Schema({
   }
 });
 
-var Vote = mongoose.model('Contest', ContestSchema);
+var Contest = mongoose.model('Contest', ContestSchema);
 exports.Contest = Contest;
