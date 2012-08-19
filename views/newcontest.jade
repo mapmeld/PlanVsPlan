@@ -2,7 +2,7 @@ head
   title PlanVsPlan: New Contest
   link(href='/stylesheets/bootstrap.min.css', rel='stylesheet', type='text/css')
 body(style="background-color:#f0f0f0")
-  div.container(style="background-color:#272B30;padding:20px;")
+  div.container(style="background-color:#fff;padding:20px;")
     .row
       .hero-unit.span9
         h1 Plan vs Plan
@@ -11,28 +11,41 @@ body(style="background-color:#f0f0f0")
         .span4
           h4 Side One: Name
           input(name='ditemname', value='')
+          br
+          br
           h4 Side One: Starting Picture
           input(name='ditempic', value='')
+          br
+          br
           h4 Side One: Details
           input(name='ditemdetails', value='')
 
         .span4
           h4 Side Two: Name
           input(name='bitemname', value='')
+          br
+          br
           h4 Side Two: Starting Picture
           input(name='bitempic', value='')
+          br
+          br
           h4 Side Two: Details
           input(name='bitemdetails', value='')
           
         .span3
           h4 Contest Name
           input(name='mainname', value='')
+          br
+          br
           h4 Contest Thumbnail
           input(name='mainphoto', value='')
+          br
+          br
           h4 VS Icon
           img(src='http://i.imgur.com/P8VmU.png', width='40')
           br
-          input.btn.btn-primary(type='submit', value='Create')
+          br
+          input.btn.btn-primary(type='submit', value='Create', style='width:100%;')
 
     br
     br
