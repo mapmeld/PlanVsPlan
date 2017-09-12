@@ -1,5 +1,7 @@
 # About PlanVsPlan
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mapmeld/PlanVsPlan.svg)](https://greenkeeper.io/)
+
 This is a simple app experimenting with a competition between two plans or programs, with user submissions possible to aid either side.
 
 Inspired by [Wikipedia Vs Predator](http://wikipediavspredator.com).
